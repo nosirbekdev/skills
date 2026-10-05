@@ -1,0 +1,11 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Data Visualization",
+      "description": "Premium charts and dashboards for web and mobile.",
+      "skills": ["premium-charts"]
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 # premium-charts
 
-AI agent skill: istalgan chart turini **premium darajada** yaratadi. Kod yozishdan oldin developerdan qisqa savollar so'raydi (chart turi, data, framework, library, style), keyin production-ready, type-safe, accessible chart quradi.
+[![skills.sh](https://skills.sh/b/nosirbekdev/skills)](https://skills.sh/nosirbekdev/skills)
+
+An AI agent skill that builds **premium-quality** charts of any type. Before writing code, it asks the developer a few short questions (chart type, data, framework, library, style), then produces a production-ready, type-safe, accessible chart.
 
 ## Install
 
@@ -8,32 +10,32 @@ AI agent skill: istalgan chart turini **premium darajada** yaratadi. Kod yozishd
 npx skills add nosirbekdev/skills
 ```
 
-## Nima qila oladi
+## What it can do
 
-- 30+ chart turi: line, area, bar, stacked, combo, pie/donut, radar, scatter, bubble, heatmap, treemap, sunburst, sankey, funnel, gauge, candlestick, waterfall, boxplot, calendar, gantt, network, choropleth map, sparkline, KPI card...
+- 30+ chart types: line, area, bar, stacked, combo, pie/donut, radar, scatter, bubble, heatmap, treemap, sunburst, sankey, funnel, gauge, candlestick, waterfall, boxplot, calendar, gantt, network, choropleth map, sparkline, KPI card, and more.
 - Web: React, Next.js, Vue, Svelte, vanilla JS
 - Mobile: React Native / Expo
-- Library: Recharts, shadcn/ui charts, ECharts, Nivo, Visx, D3, Chart.js, ApexCharts, TradingView Lightweight Charts, Victory Native XL
-- Har doim: loading / error / empty state, dark mode, responsive, a11y, formatted tooltips, smooth animation
+- Libraries: Recharts, shadcn/ui charts, ECharts, Nivo, Visx, D3, Chart.js, ApexCharts, TradingView Lightweight Charts, Victory Native XL
+- Always included: loading / error / empty states, dark mode, responsive layout, a11y, formatted tooltips, smooth animations
 
-## Ishlatish
+## Usage
 
-Agent'ga shunchaki yozing:
+Just tell the agent:
 
-> Dashboard uchun sales chart qilib ber
+> Build a sales chart for the dashboard
 
-Agent avval savol beradi, keyin chart quradi.
+The agent asks a few questions first, then builds the chart.
 
 ## Structure
 
 ```
-premium-charts/
+skills/premium-charts/
 ├── SKILL.md                    # Workflow (discovery → plan → build → QA)
 ├── references/
-│   ├── discovery.md            # Savollar banki + default'lar
-│   ├── chart-catalog.md        # Har bir chart turi: qachon ishlatiladi, pitfall'lar
-│   ├── libraries.md            # Library tanlash matrix'i + setup
-│   └── premium-design.md       # Design system: rang, typography, tooltip, motion, a11y
+│   ├── discovery.md            # Question bank + defaults
+│   ├── chart-catalog.md        # Each chart type: when to use it, pitfalls
+│   ├── libraries.md            # Library selection matrix + setup
+│   └── premium-design.md       # Design system: color, typography, tooltip, motion, a11y
 └── examples/
     ├── recharts-area-premium.tsx
     ├── echarts-heatmap-premium.tsx
