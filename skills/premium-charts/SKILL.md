@@ -5,108 +5,108 @@ description: Build any chart or data visualization at premium, production qualit
 
 # Premium Charts
 
-Maqsad: developer so'ragan chartni **birinchi urinishda** premium sifatda qurish — Stripe, Linear, Vercel dashboard'lari darajasida. Buning uchun avval to'g'ri savollar beriladi, keyin aniq reja asosida kod yoziladi.
+Goal: build the chart the developer asked for at premium quality **on the first try** — at the level of Stripe, Linear, and Vercel dashboards. To do that, ask the right questions first, then write code against a clear plan.
 
-Workflow 4 bosqich: **Discovery → Plan → Build → QA**. Bosqichlarni tashlab ketma.
+The workflow has 4 phases: **Discovery → Plan → Build → QA**. Do not skip phases.
 
 ---
 
-## Phase 1 — Discovery (kod yozishdan OLDIN)
+## Phase 1 — Discovery (BEFORE writing code)
 
-### 1.1 Avval o'zing o'rgan
-Savol berishdan oldin javobini o'zing topa oladiganlarini aniqla:
-- `package.json` → framework (next, react, vue, svelte, expo), mavjud chart library, Tailwind, shadcn/ui, TypeScript.
-- Mavjud chart component'lar → ularning style'i va pattern'iga moslash kerak.
-- `tailwind.config` / `globals.css` → brand ranglari, CSS variable'lar, dark mode strategiyasi.
-- Data manbasi: API type'lar, Prisma/Drizzle schema, mock data, React Query hook'lar.
-- Developer xabarida allaqachon aytilgan narsalar.
+### 1.1 Investigate first
+Before asking questions, figure out everything you can answer yourself:
+- `package.json` → framework (next, react, vue, svelte, expo), existing chart library, Tailwind, shadcn/ui, TypeScript.
+- Existing chart components → match their style and patterns.
+- `tailwind.config` / `globals.css` → brand colors, CSS variables, dark mode strategy.
+- Data source: API types, Prisma/Drizzle schema, mock data, React Query hooks.
+- Anything the developer already stated in their message.
 
-Topilgan javoblarni qayta so'rama.
+Do not re-ask for things you already found.
 
-### 1.2 Savollar
-Qolgan noaniqliklarni **bitta xabarda**, raqamlangan holda so'ra. Har bir savolga variantlar va **default** ber, developer "default" yoki "o'zing hal qil" desa davom eta olishi uchun. To'liq savollar banki: `references/discovery.md`.
+### 1.2 Questions
+Ask the remaining unknowns in **a single message**, numbered. Give each question options and a **default**, so the developer can proceed by just saying "default" or "you decide". Full question bank: `references/discovery.md`.
 
-Asosiy savollar (faqat javobi noma'lumlarini so'ra, odatda 3–6 ta):
+Core questions (ask only the ones you don't know the answer to, usually 3–6):
 
-1. **Maqsad** — chart qanday savolga javob beradi? (trend, taqqoslash, ulush, taqsimot, korrelyatsiya, oqim, ierarxiya, geografiya, progress)
-2. **Chart turi** — aniq turi bormi yoki maqsadga qarab men tavsiya qilaymi?
-3. **Data** — shape (namuna JSON yoki type), hajmi (taxminan nechta nuqta/series), manba (API / static / real-time WebSocket).
-4. **Platforma va library** — framework va afzal ko'rilgan library (yoki "tavsiya qil").
-5. **Interaktivlik** — tooltip, legend toggle, zoom/brush, drill-down, time range filter, export (PNG/CSV), real-time update.
-6. **Style** — brand ranglari, dark mode, joylashuv (dashboard card / full page / sparkline), o'lcham.
+1. **Goal** — what question should the chart answer? (trend, comparison, share, distribution, correlation, flow, hierarchy, geography, progress)
+2. **Chart type** — a specific type in mind, or should I recommend one based on the goal?
+3. **Data** — shape (sample JSON or type), size (roughly how many points/series), source (API / static / real-time WebSocket).
+4. **Platform and library** — framework and preferred library (or "recommend one").
+5. **Interactivity** — tooltip, legend toggle, zoom/brush, drill-down, time range filter, export (PNG/CSV), real-time updates.
+6. **Style** — brand colors, dark mode, placement (dashboard card / full page / sparkline), size.
 
-Agar developer turini bilmasa — maqsad va data'ga qarab 1–2 variant tavsiya qil va nima uchunligini bir jumlada tushuntir (`references/chart-catalog.md`).
+If the developer doesn't know the type, recommend 1–2 options based on the goal and data and explain why in one sentence (`references/chart-catalog.md`).
 
-### 1.3 Qachon savolsiz davom etish mumkin
-- Developer "savol berma", "o'zing hal qil", "tez" desa → default'lar bilan qur va qabul qilgan taxminlaringni javob boshida 2–4 qatorda yoz.
-- So'rov to'liq aniq bo'lsa (tur, data, library aytilgan) → to'g'ridan-to'g'ri Phase 2.
+### 1.3 When to proceed without questions
+- If the developer says "don't ask", "you decide", or "fast" → build with defaults and list the assumptions you made in 2–4 lines at the start of your answer.
+- If the request is fully clear (type, data, library stated) → go straight to Phase 2.
 
 ---
 
 ## Phase 2 — Plan
 
-Kod yozishdan oldin qisqa reja tuz (developerga 3–6 qatorda ko'rsat):
-- Tanlangan chart turi + sabab
-- Library + sabab (`references/libraries.md` dagi matrix bo'yicha)
+Before writing code, draft a short plan (show it to the developer in 3–6 lines):
+- Chosen chart type + reason
+- Library + reason (per the matrix in `references/libraries.md`)
 - Data contract (TypeScript type)
-- Fayllar ro'yxati (component, types, hook, mock data)
-- Interaktiv feature'lar
+- File list (component, types, hook, mock data)
+- Interactive features
 
-Murakkab bo'lmagan so'rovda rejani alohida tasdiqlatishni kutma — rejani yoz va darhol qur.
+For simple requests, don't wait for separate approval — write the plan and build immediately.
 
 ---
 
 ## Phase 3 — Build
 
-Qurishdan oldin quyidagilarni o'qi:
-- `references/premium-design.md` — **har doim** (premium sifat qoidalari shu yerda)
-- `references/libraries.md` — tanlangan library bo'limi
-- `references/chart-catalog.md` — tanlangan chart turi bo'limi
-- `examples/` — eng yaqin namunani asos sifatida ol
+Before building, read:
+- `references/premium-design.md` — **always** (the premium quality rules live here)
+- `references/libraries.md` — the section for the chosen library
+- `references/chart-catalog.md` — the section for the chosen chart type
+- `examples/` — use the closest example as a starting point
 
-### Majburiy talablar (har bir chart)
-1. **Type-safe**: data uchun aniq type/interface, `any` yo'q. Generic component bo'lsa `<T extends Record<string, unknown>>`.
-2. **4 ta state**: loading (chart shaklidagi skeleton), error (xabar + retry), empty (tushunarli matn + icon), success.
-3. **Responsive**: container'ga moslashadi; mobile'da label/legend soddalashadi.
-4. **Dark mode**: ranglar CSS variable/theme token orqali, hardcode hex emas.
-5. **Formatlash**: `Intl.NumberFormat` / `Intl.DateTimeFormat` — currency, compact (12.4K), percent, sana. Locale parametr sifatida.
-6. **Custom tooltip**: default tooltip emas — yaxshi typography, rang indikator, formatlangan qiymat, kerak bo'lsa delta (▲ 12%).
-7. **Accessibility**: `role="img"` + `aria-label` (chart xulosasi), rang ko'r uchun pattern/label, keyboard focus (library qo'llasa), `prefers-reduced-motion`.
-8. **Performance**: data `useMemo`, 1000+ nuqtada animation o'chiriladi yoki canvas library (ECharts) tanlanadi, 10K+ da downsampling (LTTB).
-9. **Next.js**: chart component'ga `"use client"`; SSR muammosi bo'lsa `dynamic(() => import(...), { ssr: false })`.
-10. **React Native**: Victory Native XL (Skia) yoki shu kabi native renderer; WebView-based chartlardan qoch, gesture (pan/press) bilan tooltip.
+### Mandatory requirements (every chart)
+1. **Type-safe**: precise type/interface for the data, no `any`. For a generic component use `<T extends Record<string, unknown>>`.
+2. **4 states**: loading (chart-shaped skeleton), error (message + retry), empty (clear text + icon), success.
+3. **Responsive**: adapts to its container; labels/legend simplify on mobile.
+4. **Dark mode**: colors via CSS variables/theme tokens, not hardcoded hex.
+5. **Formatting**: `Intl.NumberFormat` / `Intl.DateTimeFormat` — currency, compact (12.4K), percent, dates. Locale as a parameter.
+6. **Custom tooltip**: not the default tooltip — good typography, color indicator, formatted values, and a delta when relevant (▲ 12%).
+7. **Accessibility**: `role="img"` + `aria-label` (chart summary), patterns/labels for color-blind users, keyboard focus (if the library supports it), `prefers-reduced-motion`.
+8. **Performance**: memoize data with `useMemo`; disable animation at 1000+ points or pick a canvas library (ECharts); downsample at 10K+ (LTTB).
+9. **Next.js**: add `"use client"` to the chart component; if SSR breaks, use `dynamic(() => import(...), { ssr: false })`.
+10. **React Native**: Victory Native XL (Skia) or a similar native renderer; avoid WebView-based charts; tooltip via gesture (pan/press).
 
-### Kod tuzilmasi
-- Mavjud loyiha konventsiyalariga moslash (fayl joylashuvi, naming, import alias).
-- Kichik chart → bitta component fayl. Dashboard → `components/charts/` ichida alohida component'lar + umumiy `chart-card.tsx`, `chart-tooltip.tsx`, `formatters.ts`.
-- Real-time bo'lsa: WebSocket/React Query hook alohida, chart faqat props oladi.
-- Developer data bermagan bo'lsa → realistik mock data generator (`mock-data.ts`) yoz, tasodifiy shovqin bilan, toza sinus emas.
-
----
-
-## Phase 4 — QA (topshirishdan oldin)
-
-Quyidagi checklist'dan o'tkaz va xatolarni tuzat:
-- [ ] Bo'sh array, bitta nuqta, `null`/`undefined` qiymat, manfiy son, juda katta son, juda uzun label — chart buzilmaydi
-- [ ] Ranglar light va dark'da kontrast yetarli
-- [ ] Axis label'lar ustma-ust tushmaydi (tick interval / rotate / truncate)
-- [ ] Tooltip ekran chetida kesilmaydi
-- [ ] Legend 6+ series'da ham tartibli
-- [ ] Mobile kenglikda (360px) o'qiladi
-- [ ] TypeScript xatosiz, `any` yo'q
-- [ ] Faqat kerakli dependency qo'shilgan; install buyrug'i ko'rsatilgan
-
-Developerga yakuniy javob: o'rnatish buyrug'i, fayllar, qanday ishlatish (usage namunasi), qabul qilingan taxminlar. Qisqa.
+### Code structure
+- Match existing project conventions (file placement, naming, import aliases).
+- Small chart → a single component file. Dashboard → separate components under `components/charts/` plus shared `chart-card.tsx`, `chart-tooltip.tsx`, `formatters.ts`.
+- If real-time: keep the WebSocket/React Query hook separate; the chart only takes props.
+- If the developer provided no data → write a realistic mock data generator (`mock-data.ts`) with random noise, not a clean sine wave.
 
 ---
 
-## Reference fayllar
-| Fayl | Qachon o'qiladi |
+## Phase 4 — QA (before handing off)
+
+Run through this checklist and fix any issues:
+- [ ] Empty array, single point, `null`/`undefined` value, negative number, very large number, very long label — the chart doesn't break
+- [ ] Colors have enough contrast in both light and dark
+- [ ] Axis labels don't overlap (tick interval / rotate / truncate)
+- [ ] Tooltip isn't clipped at screen edges
+- [ ] Legend stays tidy even with 6+ series
+- [ ] Readable at mobile width (360px)
+- [ ] No TypeScript errors, no `any`
+- [ ] Only necessary dependencies added; install command shown
+
+Final answer to the developer: install command, files, how to use it (usage example), assumptions made. Keep it short.
+
+---
+
+## Reference files
+| File | When to read |
 |---|---|
-| `references/discovery.md` | Phase 1 — savollar banki, default'lar, tavsiya qoidalari |
-| `references/chart-catalog.md` | Chart turi tanlash yoki aniq tur bo'yicha best practice |
-| `references/libraries.md` | Library tanlash, install, platformaga xos gotcha'lar |
-| `references/premium-design.md` | Har doim Build oldidan — premium vizual standart |
+| `references/discovery.md` | Phase 1 — question bank, defaults, recommendation rules |
+| `references/chart-catalog.md` | Choosing a chart type, or best practices for a specific type |
+| `references/libraries.md` | Library selection, install, platform-specific gotchas |
+| `references/premium-design.md` | Always, before Build — premium visual standard |
 | `examples/recharts-area-premium.tsx` | React/Next.js + Recharts/shadcn |
-| `examples/echarts-heatmap-premium.tsx` | Murakkab/katta data, ECharts |
+| `examples/echarts-heatmap-premium.tsx` | Complex/large data, ECharts |
 | `examples/rn-victory-line-premium.tsx` | React Native / Expo |
