@@ -1,6 +1,6 @@
 # Chart catalog
 
-Har bir tur: **qachon**, **premium tafsilotlar**, **pitfall'lar**, **library**.
+Each type: **when**, **premium details**, **pitfalls**, **library**.
 
 ## Contents
 1. Trend: Line, Area, Stacked area, Sparkline, Step
@@ -20,147 +20,147 @@ Har bir tur: **qachon**, **premium tafsilotlar**, **pitfall'lar**, **library**.
 ## 1. Trend
 
 ### Line
-- **Qachon**: 3+ series trend, aniq qiymat muhim.
-- **Premium**: `type="monotone"`, strokeWidth 2–2.5, dot faqat hover'da (activeDot r=4–5 + ring), oxirgi nuqtada label, solishtirish davri dashed (`strokeDasharray="4 4"`) va 40% opacity.
-- **Pitfall**: 6+ series → spaghetti. Highlight-on-hover yoki small multiples ishlat. Y o'qi 0'dan boshlanishi shart emas, lekin buni aniq ko'rsat.
+- **When**: 3+ series trend, exact values matter.
+- **Premium**: `type="monotone"`, strokeWidth 2–2.5, dot only on hover (activeDot r=4–5 + ring), label at the last point, comparison period dashed (`strokeDasharray="4 4"`) at 40% opacity.
+- **Pitfall**: 6+ series → spaghetti. Use highlight-on-hover or small multiples. The Y axis need not start at 0, but make that explicit.
 - **Library**: Recharts, ECharts, Chart.js, Victory Native.
 
 ### Area
-- **Qachon**: 1–2 series trend, hajm hissi muhim (revenue, traffic).
-- **Premium**: vertical gradient fill (stroke rangi 30–35% → 0%), ingichka stroke, nozik horizontal grid. Dashboard hero chart uchun eng yaxshi tanlov.
-- **Pitfall**: overlapping area'lar bir-birini yashiradi → stacked yoki line.
+- **When**: 1–2 series trend, a sense of volume matters (revenue, traffic).
+- **Premium**: vertical gradient fill (stroke color 30–35% → 0%), thin stroke, subtle horizontal grid. The best choice for a dashboard hero chart.
+- **Pitfall**: overlapping areas hide each other → use stacked or line.
 
 ### Stacked area
-- **Qachon**: jami va tarkib vaqt bo'yicha.
-- **Pitfall**: o'rtadagi qatlamlarni o'qish qiyin — eng muhim series pastga.
+- **When**: total and composition over time.
+- **Pitfall**: middle layers are hard to read — put the most important series at the bottom.
 
 ### Sparkline
-- **Qachon**: jadval/KPI card ichida mini trend.
-- **Premium**: axis, grid, tooltip yo'q; 24–40px balandlik; rangi trend yo'nalishiga qarab (o'sish green, tushish red) yoki neytral; oxirgi nuqtada dot.
+- **When**: a mini trend inside a table/KPI card.
+- **Premium**: no axis, grid, or tooltip; 24–40px height; color by trend direction (up green, down red) or neutral; dot at the last point.
 
 ### Step
-- **Qachon**: diskret o'zgarish (narx tarifi, status, inventory).
+- **When**: discrete change (price tiers, status, inventory).
 
 ## 2. Comparison
 
 ### Vertical bar
-- **Qachon**: ≤12 kategoriya yoki vaqt davri.
-- **Premium**: `radius={[6,6,0,0]}`, barSize 24–40 yoki barCategoryGap 20–30%, hover'da boshqa bar'lar 40% opacity, value label tepada (kam bar bo'lsa).
-- **Pitfall**: Y o'qi DOIM 0'dan boshlanadi.
+- **When**: ≤12 categories or time periods.
+- **Premium**: `radius={[6,6,0,0]}`, barSize 24–40 or barCategoryGap 20–30%, non-hovered bars at 40% opacity, value label on top (when few bars).
+- **Pitfall**: the Y axis ALWAYS starts at 0.
 
 ### Horizontal bar
-- **Qachon**: uzun label, ranking, 8+ kategoriya. Qiymat bo'yicha saralangan.
-- **Premium**: label chapda, qiymat bar oxirida, track (fon) bar 8% opacity.
+- **When**: long labels, ranking, 8+ categories. Sorted by value.
+- **Premium**: label on the left, value at the end of the bar, track (background) bar at 8% opacity.
 
 ### Grouped bar
-- **Pitfall**: 3 tadan ortiq group → o'qilmaydi.
+- **Pitfall**: more than 3 groups → unreadable.
 
 ### Stacked bar
-- **Premium**: faqat eng yuqori segmentda radius, segmentlar orasida 1–2px background-rangli stroke.
+- **Premium**: radius only on the topmost segment, a 1–2px background-colored stroke between segments.
 
 ### Lollipop
-- Bar'ning minimalist alternativasi, ko'p kategoriyada vizual shovqin kam.
+- A minimalist alternative to bars, less visual noise with many categories.
 
 ### Bullet
-- **Qachon**: KPI vs target vs diapazonlar (poor/ok/good). Gauge'dan joy tejaydi.
+- **When**: KPI vs target vs ranges (poor/ok/good). Saves space over a gauge.
 
 ## 3. Composition
 
 ### Pie / Donut
-- **Qachon**: ≤5 bo'lak, jami 100%.
-- **Premium**: donut (innerRadius 60–70%), markazda total + label, `paddingAngle` 2, `cornerRadius` 4–6, hover'da bo'lak kattalashadi, legend yonida foiz bilan. Kichik bo'laklar "Boshqa"ga birlashtiriladi (<3%).
-- **Pitfall**: 6+ bo'lak, yaqin qiymatlar, 3D pie — hech qachon.
+- **When**: ≤5 slices, totaling 100%.
+- **Premium**: donut (innerRadius 60–70%), total + label in the center, `paddingAngle` 2, `cornerRadius` 4–6, slice grows on hover, legend alongside with percentages. Small slices merged into "Other" (<3%).
+- **Pitfall**: 6+ slices, close values, 3D pie — never.
 
 ### Treemap
-- **Qachon**: ko'p kategoriyali ulush, ierarxiya. Kichik to'rtburchaklarda label yashiriladi.
+- **When**: share across many categories, hierarchy. Labels hidden on small rectangles.
 
 ### Sunburst
-- **Qachon**: 2–3 darajali ierarxiya. ECharts/Nivo.
+- **When**: 2–3 level hierarchy. ECharts/Nivo.
 
 ### Waterfall
-- **Qachon**: boshlang'ich → o'zgarishlar → yakuniy (P&L, budget).
-- **Premium**: musbat green, manfiy red, total neytral/brand; connector chiziqlar.
-- **Recharts'da**: stacked bar + transparent "base" segment.
+- **When**: start → changes → end (P&L, budget).
+- **Premium**: positive green, negative red, total neutral/brand; connector lines.
+- **In Recharts**: stacked bar + a transparent "base" segment.
 
 ## 4. Distribution
 
 ### Histogram
-- Bin soni: Sturges/Freedman–Diaconis; bar'lar orasida bo'shliq yo'q (yoki 1px).
+- Bin count: Sturges/Freedman–Diaconis; no gap between bars (or 1px).
 
 ### Boxplot / Violin
-- Outlier'lar alohida dot. ECharts (boxplot), Visx/Nivo.
+- Outliers as separate dots. ECharts (boxplot), Visx/Nivo.
 
 ## 5. Relationship
 
 ### Scatter
-- **Premium**: dot opacity 0.6–0.7 (overplotting), hover'da highlight, ixtiyoriy trend line (linear regression), quadrant chiziqlari.
-- **Pitfall**: 5K+ nuqta → canvas/WebGL (ECharts `large: true`).
+- **Premium**: dot opacity 0.6–0.7 (overplotting), highlight on hover, optional trend line (linear regression), quadrant lines.
+- **Pitfall**: 5K+ points → canvas/WebGL (ECharts `large: true`).
 
 ### Bubble
-- Radius **area** bo'yicha scale qilinadi (sqrt), radius bo'yicha emas.
+- Radius scaled by **area** (sqrt), not by radius.
 
 ### Heatmap
-- **Premium**: sequential palette (bir rang, och → to'q), diverging (manfiy↔musbat) faqat markaz mazmunli bo'lsa; cell gap 2px, radius 3–4; visualMap/legend gradient; tooltip'da aniq qiymat.
+- **Premium**: sequential palette (one color, light → dark); diverging (negative↔positive) only when the center is meaningful; cell gap 2px, radius 3–4; visualMap/legend gradient; exact value in the tooltip.
 
 ### Correlation matrix
-- Diverging palette, −1..1, diagonal yashirin yoki neytral.
+- Diverging palette, −1..1, diagonal hidden or neutral.
 
 ## 6. Flow
 
 ### Funnel
-- **Premium**: har bosqichda absolute + conversion % (oldingi bosqichdan va boshidan); horizontal bar-funnel ko'pincha klassik trapetsiyadan aniqroq.
+- **Premium**: per step show absolute + conversion % (from the previous step and from the start); a horizontal bar-funnel is often more precise than the classic trapezoid.
 
 ### Sankey
-- **Qachon**: ko'p manba → ko'p maqsad oqimi (traffic source → page → conversion). ECharts/Nivo/D3.
-- **Premium**: link rangi source node'dan gradient, hover'da path highlight.
+- **When**: flow from many sources → many targets (traffic source → page → conversion). ECharts/Nivo/D3.
+- **Premium**: link color as a gradient from the source node, path highlight on hover.
 
 ### Network graph
-- Force layout (ECharts graph, D3-force), 500+ node'da canvas/WebGL.
+- Force layout (ECharts graph, D3-force); canvas/WebGL at 500+ nodes.
 
 ## 7. Progress / KPI
 
 ### KPI card
-- Katta raqam (tabular-nums, 28–36px), label (muted, 13px), delta badge (▲ 12.4% vs last month, green/red), sparkline pastda. Loading → skeleton.
+- Big number (tabular-nums, 28–36px), label (muted, 13px), delta badge (▲ 12.4% vs last month, green/red), sparkline below. Loading → skeleton.
 
 ### Gauge / Radial bar
-- **Qachon**: bitta qiymat diapazonda (CPU, target bajarilishi).
-- **Premium**: 270° arc, rounded cap, track 10% opacity, markazda qiymat, threshold ranglari.
+- **When**: a single value within a range (CPU, target completion).
+- **Premium**: 270° arc, rounded cap, track at 10% opacity, value in the center, threshold colors.
 
 ### Progress ring
-- Multiple concentric ring (Apple Activity style) — 3 tagacha.
+- Multiple concentric rings (Apple Activity style) — up to 3.
 
 ## 8. Time-specific
 
 ### Candlestick
-- **Library**: TradingView Lightweight Charts (eng yaxshi), ECharts.
-- **Premium**: volume pastki pane, crosshair, MA overlay, up green / down red (yoki locale bo'yicha almashtirilishi mumkin).
+- **Library**: TradingView Lightweight Charts (best), ECharts.
+- **Premium**: volume in a bottom pane, crosshair, MA overlay, up green / down red (may be swapped by locale).
 
 ### Calendar heatmap
 - GitHub contribution style. Nivo `ResponsiveCalendar`, ECharts calendar.
 
 ### Gantt / Timeline
-- ECharts custom series yoki frappe-gantt / vis-timeline. Bugungi kun vertical line.
+- ECharts custom series, or frappe-gantt / vis-timeline. Today as a vertical line.
 
 ## 9. Multi-dimensional
 
 ### Radar
-- ≤8 o'q, ≤3 series, fill 20% opacity. O'qlar bir xil scale'da bo'lishi shart.
+- ≤8 axes, ≤3 series, fill at 20% opacity. Axes must be on the same scale.
 
 ### Parallel coordinates
-- ECharts. Brush bilan filter.
+- ECharts. Filter with brush.
 
 ## 10. Geo
 
 ### Choropleth
-- ECharts `map` + GeoJSON (masalan O'zbekiston viloyatlari) yoki react-simple-maps. Sequential palette, legend, hover tooltip.
-- **Pitfall**: absolute son emas, per-capita/normalized qiymat ishlat.
+- ECharts `map` + GeoJSON (e.g. the regions of Uzbekistan) or react-simple-maps. Sequential palette, legend, hover tooltip.
+- **Pitfall**: use per-capita/normalized values, not absolute counts.
 
 ### Route / GPS heatmap
-- Map library (MapLibre GL / Leaflet / react-native-maps) + heatmap layer — bu chart library emas, map library vazifasi.
+- A map library (MapLibre GL / Leaflet / react-native-maps) + a heatmap layer — this is a map library's job, not a chart library's.
 
 ## 11. Combo
 
 ### Bar + Line (dual axis)
-- **Qachon**: hajm (bar) + rate (line), masalan orders va conversion %.
-- **Premium**: o'ng o'q rangi line rangiga mos, ikkala o'q label'i aniq birlik bilan.
-- **Pitfall**: dual axis manipulyativ bo'lishi mumkin — ikkala o'q ham 0'dan, yoki small multiples.
+- **When**: volume (bar) + rate (line), e.g. orders and conversion %.
+- **Premium**: the right axis color matches the line color, both axis labels with clear units.
+- **Pitfall**: dual axes can be manipulative — either start both axes at 0, or use small multiples.

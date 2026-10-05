@@ -1,87 +1,87 @@
-# Discovery — savollar banki
+# Discovery — question bank
 
-Faqat javobi kontekstdan topilmaganlarini so'ra. Bitta xabarda, raqamlangan, har biriga variantlar va **(default)** belgisi bilan. Maksimal 6 ta savol — qolganlariga default qo'llanadi.
+Ask only the ones you can't answer from context. In a single message, numbered, each with options and a **(default)** marker. Max 6 questions — apply defaults for the rest.
 
-## Savol berish formati (namuna)
+## Question format (example)
 
 ```
-Chartni premium qilish uchun bir nechta savol:
+A few questions to make the chart premium:
 
-1. Chart nimani ko'rsatishi kerak?
-   a) vaqt bo'yicha trend (default)  b) kategoriyalarni taqqoslash  c) ulush  d) boshqa: ...
-2. Data qanday? Namuna JSON yoki type tashlang. Taxminan nechta nuqta?
-3. Library: loyihada Recharts bor — shuni ishlataymi? (default: ha)
-4. Interaktivlik: a) tooltip + legend (default)  b) + zoom/brush  c) + time range filter  d) + real-time
-5. Dark mode kerakmi? (default: ha, loyiha theme'iga mos)
+1. What should the chart show?
+   a) trend over time (default)  b) compare categories  c) share  d) other: ...
+2. What's the data like? Drop a sample JSON or type. Roughly how many points?
+3. Library: the project has Recharts — use that? (default: yes)
+4. Interactivity: a) tooltip + legend (default)  b) + zoom/brush  c) + time range filter  d) + real-time
+5. Need dark mode? (default: yes, matching the project theme)
 
-"default" deb yozsangiz shu variantlar bilan quraman.
+Say "default" and I'll build with these options.
 ```
 
-## To'liq savollar banki
+## Full question bank
 
-### Maqsad va kontekst
-- Chart qanday savolga javob beradi / qanday qarorga yordam beradi?
-- Kim ko'radi? (CEO dashboard — sodda, katta raqamlar; analitik — detallar, zoom)
-- Qayerda joylashadi? dashboard card · full page · modal · sparkline (table/KPI ichida) · PDF/email export
-- Bir nechta chart (dashboard) yoki bitta?
+### Goal and context
+- What question does the chart answer / what decision does it support?
+- Who sees it? (CEO dashboard — simple, big numbers; analyst — details, zoom)
+- Where does it live? dashboard card · full page · modal · sparkline (inside a table/KPI) · PDF/email export
+- Multiple charts (dashboard) or a single one?
 
 ### Data
-- Shape: namuna JSON yoki TypeScript type
-- Hajm: nuqtalar soni, series soni (1 / 2–5 / 6+)
-- Manba: static · REST API (React Query) · WebSocket real-time · CSV fayl
-- Vaqt o'qi bormi? granularity (minute/hour/day/month), timezone
-- Qiymat birligi: currency (qaysi), percent, count, duration, bytes
-- `null`/bo'shliqlar bormi? Ular qanday ko'rsatilsin (uzilish / 0 / interpolatsiya)?
+- Shape: sample JSON or TypeScript type
+- Size: number of points, number of series (1 / 2–5 / 6+)
+- Source: static · REST API (React Query) · WebSocket real-time · CSV file
+- Is there a time axis? granularity (minute/hour/day/month), timezone
+- Value unit: currency (which), percent, count, duration, bytes
+- Any `null`/gaps? How should they be shown (break / 0 / interpolation)?
 
-### Platforma
+### Platform
 - Framework: Next.js (App/Pages router) · React (Vite) · Vue · Svelte · React Native/Expo · vanilla
-- Mavjud UI kit: shadcn/ui · MUI · Ant Design · Chakra · Tailwind-only
-- Library afzalligi yoki "tavsiya qil"
+- Existing UI kit: shadcn/ui · MUI · Ant Design · Chakra · Tailwind-only
+- Library preference or "recommend one"
 
-### Interaktivlik
-- Tooltip (har doim), legend toggle, hover highlight
-- Zoom / pan / brush (katta time series)
-- Drill-down (bar bosilsa detal)
+### Interactivity
+- Tooltip (always), legend toggle, hover highlight
+- Zoom / pan / brush (large time series)
+- Drill-down (click a bar for detail)
 - Time range selector (7D / 30D / 90D / 1Y)
-- Comparison (oldingi davr bilan, dashed line)
+- Comparison (vs previous period, dashed line)
 - Annotation / reference line (target, average, event)
 - Export: PNG · SVG · CSV
-- Real-time streaming (yangilanish chastotasi)
+- Real-time streaming (update frequency)
 
 ### Style
-- Brand ranglari (hex yoki CSS variable)
-- Dark mode: yo'q · faqat dark · ikkalasi (default)
-- Vizual uslub: minimal (Linear/Vercel, default) · rich/gradient (Stripe) · corporate · playful
-- Animatsiya: subtle (default) · yo'q · expressive
-- Til/locale: uz-UZ · ru-RU · en-US (raqam va sana formati uchun)
+- Brand colors (hex or CSS variable)
+- Dark mode: none · dark only · both (default)
+- Visual style: minimal (Linear/Vercel, default) · rich/gradient (Stripe) · corporate · playful
+- Animation: subtle (default) · none · expressive
+- Language/locale: uz-UZ · ru-RU · en-US (for number and date formatting)
 
-## Default'lar (savolga javob bo'lmasa)
-| Parametr | Default |
+## Defaults (when a question is unanswered)
+| Parameter | Default |
 |---|---|
-| Library (React/Next) | loyihadagi mavjud; yo'q bo'lsa shadcn/ui bo'lsa shadcn charts, aks holda Recharts |
-| Library (katta data / murakkab tur) | ECharts |
+| Library (React/Next) | whatever exists in the project; if none, shadcn charts when shadcn/ui is present, otherwise Recharts |
+| Library (large data / complex type) | ECharts |
 | Library (React Native) | Victory Native XL |
 | Style | minimal, gradient fill area, subtle grid |
-| Dark mode | ikkalasi, theme token orqali |
-| Interaktivlik | custom tooltip + legend toggle |
-| Locale | developer tilidan (uz → `uz-UZ`, aks holda `en-US`) |
-| Animatsiya | 600–800ms ease-out, `prefers-reduced-motion` hurmat qilinadi |
+| Dark mode | both, via theme tokens |
+| Interactivity | custom tooltip + legend toggle |
+| Locale | from the developer's language (uz → `uz-UZ`, otherwise `en-US`) |
+| Animation | 600–800ms ease-out, respects `prefers-reduced-motion` |
 
-## Chart turini tavsiya qilish (developer bilmasa)
-| Maqsad | Birinchi tavsiya | Muqobil |
+## Recommending a chart type (when the developer doesn't know)
+| Goal | First recommendation | Alternative |
 |---|---|---|
-| Vaqt bo'yicha trend | Area (1–2 series) / Line (3+) | Bar (kam nuqta) |
-| Kategoriya taqqoslash | Horizontal bar (uzun label) / Vertical bar | Lollipop |
-| Ulush (≤5 bo'lak) | Donut + markazda total | Stacked 100% bar |
-| Ulush (6+ bo'lak) | Treemap / horizontal bar | Sunburst |
-| Taqsimot | Histogram | Boxplot, violin |
-| Korrelyatsiya | Scatter | Bubble (3-o'lcham) |
-| Plan vs fakt | Bar + target line / Bullet | Gauge (bitta KPI) |
-| Oqim / konversiya | Funnel | Sankey (ko'p yo'nalish) |
-| O'zgarish tarkibi | Waterfall | Stacked bar |
-| Vaqt × kategoriya intensivlik | Heatmap | Calendar heatmap |
-| Moliyaviy narx | Candlestick + volume | OHLC |
-| Geografiya | Choropleth | Bubble map |
-| Ko'p o'lchamli profil | Radar (≤8 o'q) | Parallel coordinates |
-| Jadval ichida trend | Sparkline | Mini bar |
-| Bitta asosiy raqam | KPI card + sparkline + delta | Gauge |
+| Trend over time | Area (1–2 series) / Line (3+) | Bar (few points) |
+| Compare categories | Horizontal bar (long labels) / Vertical bar | Lollipop |
+| Share (≤5 slices) | Donut + total in center | Stacked 100% bar |
+| Share (6+ slices) | Treemap / horizontal bar | Sunburst |
+| Distribution | Histogram | Boxplot, violin |
+| Correlation | Scatter | Bubble (3rd dimension) |
+| Plan vs actual | Bar + target line / Bullet | Gauge (single KPI) |
+| Flow / conversion | Funnel | Sankey (many paths) |
+| Composition of change | Waterfall | Stacked bar |
+| Time × category intensity | Heatmap | Calendar heatmap |
+| Financial price | Candlestick + volume | OHLC |
+| Geography | Choropleth | Bubble map |
+| Multi-dimensional profile | Radar (≤8 axes) | Parallel coordinates |
+| Trend inside a table | Sparkline | Mini bar |
+| A single key number | KPI card + sparkline + delta | Gauge |
